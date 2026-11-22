@@ -1,7 +1,7 @@
 #include <FastLED.h>
 
 // Number of LEDs in your strip
-#define NUM_LEDS 3
+#define NUM_LEDS 144
 
 // The ESP32 GPIO pin connected to the data line of the LEDs
 #define DATA_PIN 25 
@@ -48,7 +48,7 @@ void setup() {
     // Initialize random starting intervals for each LED
     unsigned long currentMillis = millis();
     for(int i = 0; i < NUM_LEDS; i++) {
-        nextToggleTime[i] = currentMillis + random(100, 1000);
+        nextToggleTime[i] = currentMillis + random(0, MAX_WAIT_TIME_MS);
         startColor[i] = CRGB::Black;
         endColor[i] = CRGB::Black;
         leds[i] = CRGB::Black;
